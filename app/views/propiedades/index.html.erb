@@ -1,0 +1,30 @@
+<style>
+	img{
+		max-height: 200px;
+		max-width: 200px;
+	}
+	.navegacion {
+		margin-top: 30px;
+		text-align: center;
+		width: 100%;
+	}
+	.propiedad {
+		border:2px solid gray;
+		padding: 10px;
+		margin-top: 10px;
+	}
+</style>
+
+<h1>Propiedades disponibles:</h1>
+<% @propiedades.each do |p| %>
+	<div class="propiedad">
+		<% if p.imagens.count > 0 %>
+			<img class="badge-item-img" src=<%= p.imagens.first.url %> alt="una_casilla">
+		<% end %>
+		<p><%= p.content %><br></p>
+		<h2 class="precio"><%= "$#{p.price} #{p.currency}" %></h2>
+	</div>
+<% end %>
+<div class="navegacion">
+	<%= will_paginate @propiedades %>
+</div>
